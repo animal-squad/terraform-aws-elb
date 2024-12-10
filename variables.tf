@@ -101,7 +101,7 @@ variable "target_groups" {
   )
 
   validation {
-    condition     = length(var.default_target_groups) >= 1 && length(var.default_target_groups) <= 5
+    condition     = length(var.target_groups) <= 5
     error_message = "alb의 target group은 1개 이상 5개 이하만 가능합니다."
   }
 }
