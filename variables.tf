@@ -88,6 +88,7 @@ variable "https_listener_rules" {
     health_check_path = optional(string)
     port              = number
   }))
+  default = {}
 }
 
 variable "target_groups" {
@@ -99,6 +100,7 @@ variable "target_groups" {
       port              = number
     })
   )
+  default = {}
 
   validation {
     condition     = length(var.target_groups) <= 5
@@ -115,4 +117,6 @@ variable "targets" {
       port             = number
     })
   )
+  default = {}
+
 }
