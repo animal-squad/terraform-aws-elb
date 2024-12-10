@@ -69,11 +69,12 @@ variable "default_target_groups" {
 }
 
 variable "default_targets" {
-  description = "default target group 별 target. key값을 통해 target id 지정"
+  description = "default target group 별 target."
 
   type = map(
     object({
       target_group_key = string
+      target_id        = string
       port             = number
     })
   )
