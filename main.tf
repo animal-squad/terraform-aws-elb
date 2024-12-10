@@ -4,13 +4,12 @@
 
 module "security_group" {
   source  = "app.terraform.io/animal-squad/security-group/aws"
-  version = "1.0.0"
+  version = "1.0.1"
 
   name_prefix = "${var.name}-alb-sg"
   vpc_id      = var.vpc_id
 
-  #map(object({ from_port = number to_port = number ip_protocol = string cidr_ipv4 = optional(string, "0.0.0.0/0") ref_sg_id = optional(string, null) }))
-  ingress_rules {
+  ingress_rules = {
     http = {
       from_port   = 80
       to_port     = 80
