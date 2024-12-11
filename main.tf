@@ -173,6 +173,6 @@ resource "aws_lb_target_group_attachment" "target" {
   for_each = var.targets
 
   target_group_arn = aws_lb_target_group.target_groups[each.value.target_group_key].arn
-  target_id        = each.key
+  target_id        = each.value.target_id
   port             = each.value.port
 }

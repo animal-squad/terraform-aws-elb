@@ -83,11 +83,9 @@ variable "default_targets" {
 variable "https_listener_rules" {
   description = "https 리스너에 추가로 연결 할 리스너 설정. priority는 1부터 50,000 사이의 값이며 중복이 있으면 안된다. key 값은 32자 이하, 영어와 hyphen만 가능"
   type = map(object({
-    path              = list(string)
+    path              = optional(list(string), ["*"])
     host              = list(string)
     priority          = number
-    health_check_path = optional(string)
-    port              = number
   }))
   default = {}
 }
@@ -115,6 +113,7 @@ variable "targets" {
   type = map(
     object({
       target_group_key = string
+      target_id        = string
       port             = number
     })
   )
